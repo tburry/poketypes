@@ -22,7 +22,7 @@ async function makeIcons(src, destDir, sizes, prefix = 'poketype') {
 (async () => {
   try {
     // create poketype-{size}.png files
-    await makeIcons(ICON_SRC, OUTPUT_DIR, [180, 152, 167, 32, 16], 'poketype');
+    await makeIcons(ICON_SRC, OUTPUT_DIR, [512, 192, 180, 152, 167, 32, 16], 'poketype');
     if (fs.existsSync(FAVICON_SRC)) {
       // create favicon sizes
       await makeIcons(FAVICON_SRC, OUTPUT_DIR, [32, 16], 'favicon');
