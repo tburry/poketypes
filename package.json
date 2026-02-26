@@ -5,9 +5,11 @@
   "description": "Single-file Pokémon Types PWA",
   "scripts": {
     "dev": "live-server docs --port=8000 --open=./index.html",
-    "start": "live-server docs --port=8000 --open=./index.html"
+    "start": "live-server docs --port=8000 --open=./index.html",
+    "build-icons": "node scripts/build-icons.js"
   },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "sharp": "^0.34.5"
   }
 }
