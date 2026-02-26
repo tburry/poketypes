@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Single-file Pokémon Types PWA",
+  "homepage": "https://tburry.github.io/poketypes/",
   "scripts": {
     "dev": "live-server docs --port=8000 --open=./index.html",
     "start": "live-server docs --port=8000 --open=./index.html",
