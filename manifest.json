@@ -1,4 +1,5 @@
 {
+  "id": "poketypes",
   "name": "Pokémon Types",
   "short_name": "Poketypes",
   "scope": ".",
