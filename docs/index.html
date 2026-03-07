@@ -224,6 +224,24 @@ a.typewrap{
     height: 20px;
   }
 }
+.btn-container {
+  margin: 16px 0;
+  justify-content: center;
+  display: none;
+}
+#share-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--header);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
 </style>
 <!-- iOS Home Screen App -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -290,10 +308,13 @@ a.typewrap{
     display: block;
   }
   tr{
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     border: 3px solid var(--thick-border);
     border-radius: 1em;
     overflow: hidden;
+  }
+  tr:last-child{
+    margin-bottom: 0;
   }
   td{
     display: block;
@@ -488,6 +509,34 @@ a.typewrap{
 <td class="matchups" data-label="Defending"><div class="matchup-group"><span class="multiplier-good">0×</span> <a href="#dragon" class="typewrap"><svg class="type-icon" role="img" aria-label="Dragon" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#type-dragon" xlink:href="#type-dragon"></use></svg><span>Dragon</span></a></div><div class="matchup-group"><span class="multiplier-good">½×</span> <a href="#fighting" class="typewrap"><svg class="type-icon" role="img" aria-label="Fighting" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#type-fighting" xlink:href="#type-fighting"></use></svg><span>Fighting</span></a><a href="#bug" class="typewrap"><svg class="type-icon" role="img" aria-label="Bug" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#type-bug" xlink:href="#type-bug"></use></svg><span>Bug</span></a><a href="#dark" class="typewrap"><svg class="type-icon" role="img" aria-label="Dark" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#type-dark" xlink:href="#type-dark"></use></svg><span>Dark</span></a></div><div class="matchup-group"><span class="multiplier-bad">2×</span> <a href="#poison" class="typewrap"><svg class="type-icon" role="img" aria-label="Poison" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#type-poison" xlink:href="#type-poison"></use></svg><span>Poison</span></a><a href="#steel" class="typewrap"><svg class="type-icon" role="img" aria-label="Steel" xmlns:xlink="http://www.w3.org/1999/xlink"><use href="#type-steel" xlink:href="#type-steel"></use></svg><span>Steel</span></a></div></td>
 </tr>
 </tbody></table>
+<div class="btn-container">
+<button id="share-btn" aria-label="Share this page">
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V8"/><polyline points="4.5 4.5 8 1 11.5 4.5"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
+Share
+</button>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('share-btn');
+  var wrap = btn.parentNode;
+  var url = 'https://tburry.github.io/poketypes/';
+  if (navigator.share) {
+    wrap.style.display = 'flex';
+    btn.addEventListener('click', function() {
+      navigator.share({title: document.title, url: url});
+    });
+  } else if (navigator.clipboard) {
+    wrap.style.display = 'flex';
+    btn.textContent = 'Copy Link';
+    btn.addEventListener('click', function() {
+      navigator.clipboard.writeText(url).then(function() {
+        btn.textContent = 'Copied!';
+        setTimeout(function(){ btn.textContent = 'Copy Link'; }, 2000);
+      });
+    });
+  }
+})();
+</script>
 <script>
 if ('serviceWorker' in navigator) {
   (async () => {
